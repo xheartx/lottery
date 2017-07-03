@@ -39,7 +39,7 @@ export default {
   },
   methods: {
     _submitCarry () {
-      this.$store.dispatch('ADMIN_SAVE_SET', { times: parseInt(this.times), oneSet: this.oneSet, twoSet: this.customize.twoSet, switch: this.isSwitch })
+      this.$store.dispatch('ADMIN_SAVE_SET', { times: parseInt(this.times) + 1, oneSet: this.oneSet, twoSet: this.customize.twoSet, switch: this.isSwitch })
       this.$vux.toast.show({
         text: '    保存成功     '
       })
