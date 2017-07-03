@@ -56,7 +56,6 @@ export default {
       if (this.isStart) {
         this.isStart = false
         if (this.customize.switch && this.customize.times === this.frequency) {
-          console.log(this.customize.times)
           this.num = this.customize[this.set.name]
         }
         this.$store.commit('TOGGLE_NUM', {name: this.set.name, newNum: this.num})
