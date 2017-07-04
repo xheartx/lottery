@@ -52,7 +52,7 @@ export default {
   left: 0;
   right: 0;
   top: 0;
-  bottom: 3rem;
+  bottom: 0;
   width: 100%;
   background: #fff;
   overflow-x: hidden;

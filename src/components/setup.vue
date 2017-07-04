@@ -6,7 +6,7 @@
       <x-input title="每页用户数" placeholder="请填写每页用户数" type="number" v-model="twoMax"></x-input>
       <x-input title="末页用户数" placeholder="请填写最后一页评论条数" type="number" v-model="lastNum"></x-input>
     </group>
-    <div class="footer-btn carry" @click.stop.prevent="_submitCarry">保存</div>
+    <div class="footer-btn carry" @click.stop.prevent="_submitCarry">下一步</div>
   </div>
 </template>
 
@@ -39,9 +39,10 @@ export default {
   methods: {
     _submitCarry () {
       this.$store.dispatch('SAVE_SET', { oneMax: this.oneMax, twoMax: this.twoMax, lastNum: this.lastNum })
-      this.$vux.toast.show({
-        text: '    保存成功     '
-      })
+      this.$router.push('/lottery')
+      // this.$vux.toast.show({
+      //   text: '    保存成功     '
+      // })
     }
   },
   components: {

@@ -2,12 +2,12 @@
    <div class="set-form">
     <group title="自定义设置随机参数">
       <!--页数-->
-      <x-switch title="是否开启" v-model="isSwitch"></x-switch>
+      <!--<x-switch title="是否开启" v-model="isSwitch"></x-switch>-->
       <x-input title="正常随机次数" placeholder="请填写正常随机次数" type="number" v-model="times"></x-input>
       <x-input title="指定用户页码" placeholder="指定用户所在页码" type="number" v-model="oneSet"></x-input>
       <x-input title="指定用户排序" placeholder="指定用户所在排序" type="number" v-model="twoSet"></x-input>
     </group>
-    <div class="footer-btn carry" @click.stop.prevent="_submitCarry">保存</div>
+    <div class="footer-btn carry" @click.stop.prevent="_submitCarry">下一步</div>
   </div>
 </template>
 
@@ -20,7 +20,7 @@ import XSwitch from 'vux/src/components/x-switch/'
 export default {
   data () {
     return {
-      isSwitch: false,
+      isSwitch: true,
       times: '',
       oneSet: '',
       twoSet: ''
@@ -40,9 +40,10 @@ export default {
   methods: {
     _submitCarry () {
       this.$store.dispatch('ADMIN_SAVE_SET', { times: parseInt(this.times) + 1, oneSet: this.oneSet, twoSet: this.customize.twoSet, switch: this.isSwitch })
-      this.$vux.toast.show({
-        text: '    保存成功     '
-      })
+      this.$router.push('/setup')
+      // this.$vux.toast.show({
+      //   text: '    保存成功     ',
+      // })
     }
   },
   components: {
@@ -59,7 +60,7 @@ export default {
     left: 0;
     right: 0;
     top: 0;
-    bottom: 1.31rem;
+    bottom: 0;
     width: 100%;
     background: #eee;
     .weui-cells__title{

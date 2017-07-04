@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <router-view></router-view>
-    <div class="tabbar">
+    <div class="tabbar" v-if="false">
       <tabbar>
         <tabbar-item :selected="$route.path === '/'" link="/">
           <span class="lottery-icon" slot="icon"></span>

@@ -101,7 +101,7 @@ h1, h2 {
   left: 0;
   right: 0;
   top: 0;
-  bottom: 1.31rem;
+  bottom: 0;
   width: 100%;
 }
 .content{
@@ -112,7 +112,7 @@ h1, h2 {
   font-size: 0.5rem;
   color: #04BE02;
   text-align: center;
-  margin: 1rem 0;
+  padding: 1rem 0;
 }
 .num{
   font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif;

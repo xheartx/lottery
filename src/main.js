@@ -17,7 +17,7 @@ Vue.use(VueRouter)
 Vue.use(ToastPlugin)
 const routes = [{
   path: '/',
-  component: Lottery
+  component: Admin
 }, {
   path: '/setup',
   component: Setup
@@ -25,11 +25,11 @@ const routes = [{
   path: '/recording',
   component: Recording
 }, {
-  path: '/admin',
-  component: Admin
+  path: '/lottery',
+  component: Lottery
 }, {
   path: '*',
-  component: Lottery
+  component: Admin
 }]
 
 const router = new VueRouter({

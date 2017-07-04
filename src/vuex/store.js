@@ -22,7 +22,7 @@ export default new Vuex.Store({
       lastNum: 20
     },
     customize: {
-      switch: false,
+      switch: true,
       times: 1,
       oneSet: 1,
       twoSet: 1
