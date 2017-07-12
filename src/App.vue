@@ -5,7 +5,7 @@
       <tabbar>
         <tabbar-item :selected="$route.path === '/lottery'" link="/lottery">
           <span class="lottery-icon" slot="icon"></span>
-          <span slot="label">抽奖</span>
+          <span slot="label">取数</span>
         </tabbar-item>
         <!-- <tabbar-item :selected="$route.path === '/recording'" link="/recording">
           <span class="recording-icon" slot="icon"></span>
