@@ -10,7 +10,7 @@ export default new Vuex.Store({
       name: 'mySet',
       text: '随机数',
       num: 0,
-      minNum: 0,
+      minNum: 1,
       maxNum: 50
     },
     oneSet: {
