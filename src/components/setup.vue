@@ -36,8 +36,8 @@ export default {
   },
   methods: {
     _submitCarry () {
-      if (this.Max && this.Mix) {
-        this.$store.dispatch('SAVE_SET', { Max: this.Max, Mix: this.Mix })
+      if (this.Max && this.Min) {
+        this.$store.dispatch('SAVE_SET', { Max: this.Max, Mix: this.Min })
         this.$router.push('/lottery')
         this.$vux.toast.show({
           text: '    保存成功     ',
