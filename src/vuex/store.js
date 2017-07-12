@@ -44,7 +44,7 @@ export default new Vuex.Store({
     MAX: state => {
       return state.mySet.maxNum
     },
-    MIX: state => {
+    MIN: state => {
       return state.mySet.minNum
     },
     ONE_MAX: state => {
