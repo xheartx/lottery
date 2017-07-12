@@ -1,12 +1,14 @@
 <template>
    <div class="set-form">
-    <group title="请填写随机参数">
+    <group title="随机数抽取">
       <!--页数-->
-      <x-input title="总页数" placeholder="请填写总页数" type="number" v-model="oneMax"></x-input>
+      <!-- <x-input title="总页数" placeholder="请填写总页数" type="number" v-model="oneMax"></x-input>
       <x-input title="每页用户数" placeholder="请填写每页用户数" type="number" v-model="twoMax"></x-input>
-      <x-input title="末页用户数" placeholder="请填写最后一页评论条数" type="number" v-model="lastNum"></x-input>
+      <x-input title="末页用户数" placeholder="请填写最后一页评论条数" type="number" v-model="lastNum"></x-input> -->
+      <x-input title="起始范围" placeholder="请填写总页数" type="number" v-model="Mix"></x-input>
+      <x-input title="结束范围" placeholder="请填写每页用户数" type="number" v-model="Max"></x-input>
     </group>
-    <div class="footer-btn carry" @click.stop.prevent="_submitCarry">下一步</div>
+    <div class="footer-btn carry" @click.stop.prevent="_submitCarry">保存</div>
   </div>
 </template>
 
@@ -18,31 +20,37 @@ import XInput from 'vux/src/components/x-input/'
 export default {
   data () {
     return {
-      oneMax: '',
-      twoMax: '',
-      lastNum: ''
+      Max: '',
+      Mix: ''
     }
   },
   created () {
-    this.oneMax = this.ONE_MAX
-    this.twoMax = this.TWO_MAX
-    this.lastNum = this.LAST_NUM
+    this.Max = this.MAX
+    this.Mix = this.MIX
   },
   computed: {
     ...mapGetters([
-      'DONE_STEP_COUNT',
-      'ONE_MAX',
-      'TWO_MAX',
-      'LAST_NUM'
+      'MAX',
+      'MIX'
     ])
   },
   methods: {
     _submitCarry () {
-      this.$store.dispatch('SAVE_SET', { oneMax: this.oneMax, twoMax: this.twoMax, lastNum: this.lastNum })
-      this.$router.push('/lottery')
-      // this.$vux.toast.show({
-      //   text: '    保存成功     '
-      // })
+      if (this.Max && this.Mix) {
+        this.$store.dispatch('SAVE_SET', { Max: this.Max, Mix: this.Mix })
+        this.$router.push('/lottery')
+        this.$vux.toast.show({
+          text: '    保存成功     ',
+          time: 1000,
+          type: 'success'
+        })
+      } else {
+        this.$vux.toast.show({
+          text: '请填写起始结束范围',
+          time: 1000,
+          type: 'cancel'
+        })
+      }
     }
   },
   components: {

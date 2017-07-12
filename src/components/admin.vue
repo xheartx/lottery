@@ -1,13 +1,13 @@
 <template>
    <div class="set-form">
-    <group title="自定义设置随机参数">
+    <group title="抽奖配置">
       <!--页数-->
       <!--<x-switch title="是否开启" v-model="isSwitch"></x-switch>-->
       <x-input title="正常随机次数" placeholder="请填写正常随机次数" type="number" v-model="times"></x-input>
       <x-input title="指定用户页码" placeholder="指定用户所在页码" type="number" v-model="oneSet"></x-input>
       <x-input title="指定用户排序" placeholder="指定用户所在排序" type="number" v-model="twoSet"></x-input>
     </group>
-    <div class="footer-btn carry" @click.stop.prevent="_submitCarry">下一步</div>
+    <div class="footer-btn carry" @click.stop.prevent="_submitCarry">完成设置</div>
   </div>
 </template>
 
@@ -39,11 +39,21 @@ export default {
   },
   methods: {
     _submitCarry () {
-      this.$store.dispatch('ADMIN_SAVE_SET', { times: parseInt(this.times) + 1, oneSet: this.oneSet, twoSet: this.customize.twoSet, switch: this.isSwitch })
-      this.$router.push('/setup')
-      // this.$vux.toast.show({
-      //   text: '    保存成功     ',
-      // })
+      if (this.isSwitch && this.times && this.oneSet && this.twoSet) {
+        this.$store.dispatch('ADMIN_SAVE_SET', { times: parseInt(this.times) + 1, oneSet: this.oneSet, twoSet: this.twoSet, switch: this.isSwitch })
+        this.$router.push('/lottery')
+        this.$vux.toast.show({
+          text: '    保存成功     ',
+          time: 1000,
+          type: 'success'
+        })
+      } else {
+        this.$vux.toast.show({
+          text: '请填写抽奖配置',
+          time: 1000,
+          type: 'cancel'
+        })
+      }
     }
   },
   components: {
@@ -145,7 +155,7 @@ export default {
       font-size: 18px;
       text-align: center;
       margin: 1rem 0.3rem 0;
-      background: #09BB07;
+      background: #1ba196;
     }
   }
 </style>

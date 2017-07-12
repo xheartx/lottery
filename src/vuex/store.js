@@ -6,6 +6,13 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     stepCount: 0,
+    mySet: {
+      name: 'mySet',
+      text: '随机数',
+      num: 0,
+      minNum: 0,
+      maxNum: 50
+    },
     oneSet: {
       name: 'oneSet',
       text: '随机页数',
@@ -27,7 +34,7 @@ export default new Vuex.Store({
       oneSet: 1,
       twoSet: 1
     },
-    frequency: 1,
+    frequency: 0,
     recording: []
   },
   getters: {
@@ -60,9 +67,8 @@ export default new Vuex.Store({
   },
   actions: {
     SAVE_SET ({ state }, obj) {
-      state.oneSet.maxNum = obj.oneMax
-      state.twoSet.maxNum = obj.twoMax
-      state.twoSet.lastNum = obj.lastNum
+      state.mySet.minNum = obj.Min
+      state.mySet.maxNum = obj.Max
     },
     ADMIN_SAVE_SET ({ state }, obj) {
       state.customize = obj

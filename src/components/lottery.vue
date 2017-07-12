@@ -1,7 +1,7 @@
 <template>
   <div class="lottery">
     <div class="content">
-      <h1 class="title">{{ set.text }}</h1>
+      <!-- <h1 class="title">{{ set.text }}</h1> -->
       <h1 class="num">{{ num }}</h1>
       <div class="lottery-btn" @click.stop.prevent="_start">
         <x-button type="primary">{{text}}</x-button>
@@ -28,6 +28,7 @@ export default {
     ...mapState({
       oneSet: state => state.oneSet,
       twoSet: state => state.twoSet,
+      mySet: state => state.mySet,
       customize: state => state.customize,
       frequency: state => state.frequency
     }),
@@ -35,13 +36,14 @@ export default {
       'DONE_STEP_COUNT'
     ]),
     set () {
-      if (this.DONE_STEP_COUNT === 1) {
-        return this.oneSet
-      } else if (this.DONE_STEP_COUNT === 2) {
-        return this.twoSet
-      } else {
-        return this.null
-      }
+      return this.mySet
+      // if (this.DONE_STEP_COUNT === 1) {
+      //   return this.oneSet
+      // } else if (this.DONE_STEP_COUNT === 2) {
+      //   return this.twoSet
+      // } else {
+      //   return this.null
+      // }
     },
     text () {
       if (!this.isStart) {
@@ -56,14 +58,18 @@ export default {
       if (this.isStart) {
         this.isStart = false
         if (this.customize.switch && this.customize.times === this.frequency) {
-          this.num = this.customize[this.set.name]
+          this.num = this.customize.oneSet
+        }
+        if (this.customize.switch && (this.customize.times + 1) === this.frequency) {
+          this.num = this.customize.twoSet
         }
         this.$store.commit('TOGGLE_NUM', {name: this.set.name, newNum: this.num})
-        if (this.DONE_STEP_COUNT === 2) {
-          this.$store.dispatch('ADD_RECORDING')
-        }
+        // if (this.DONE_STEP_COUNT === 2) {
+        //   this.$store.dispatch('ADD_RECORDING')
+        // }
       } else {
         this.isStart = true
+        this.$store.dispatch('ADD_RECORDING')
         this.$store.commit('TOGGLE_STEP_COUNT')
         this.random()
       }
@@ -117,7 +123,7 @@ h1, h2 {
 .num{
   font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif;
   font-size: 3rem;
-  color: #04BE02;
+  color: #000;
   text-align: center;
   position: absolute;
   top: 50%;
@@ -129,6 +135,9 @@ h1, h2 {
   bottom: 3rem;
   left: 1rem;
   right: 1rem;
+}
+.weui-btn_primary{
+  background: #1ba196;
 }
 .weui-btn:after{
   display: none;
