@@ -5,8 +5,8 @@
       <!-- <x-input title="总页数" placeholder="请填写总页数" type="number" v-model="oneMax"></x-input>
       <x-input title="每页用户数" placeholder="请填写每页用户数" type="number" v-model="twoMax"></x-input>
       <x-input title="末页用户数" placeholder="请填写最后一页评论条数" type="number" v-model="lastNum"></x-input> -->
-      <x-input title="起始范围" placeholder="请填写总页数" type="number" v-model="Mix"></x-input>
-      <x-input title="结束范围" placeholder="请填写每页用户数" type="number" v-model="Max"></x-input>
+      <x-input title="起始范围" placeholder="请填写起始范围" type="number" v-model="Mix"></x-input>
+      <x-input title="结束范围" placeholder="请填写结束范围" type="number" v-model="Max"></x-input>
     </group>
     <div class="footer-btn carry" @click.stop.prevent="_submitCarry">保存</div>
   </div>

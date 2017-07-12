@@ -41,6 +41,12 @@ export default new Vuex.Store({
     DONE_STEP_COUNT: state => {
       return state.stepCount
     },
+    MAX: state => {
+      return state.mySet.maxNum
+    },
+    MIN: state => {
+      return state.mySet.minNum
+    },
     ONE_MAX: state => {
       return state.oneSet.maxNum
     },
