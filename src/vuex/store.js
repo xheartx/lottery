@@ -78,6 +78,7 @@ export default new Vuex.Store({
     },
     ADMIN_SAVE_SET ({ state }, obj) {
       state.customize = obj
+      state.frequency = 0
     },
     ADD_RECORDING ({ state }) {
       state.frequency++
