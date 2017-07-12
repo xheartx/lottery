@@ -85,7 +85,7 @@ export default {
         }
       }
       .weui-label {
-        width: 2.5rem !important;
+        width: 2rem !important;
         font-size: 16px;
         color: #666;
         letter-spacing: 1px;
